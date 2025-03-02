@@ -1,5 +1,8 @@
 ;; Установка темы
-(load-theme 'deeper-blue t)
+;; (load-theme 'deeper-blue t)
+;; (load-theme 'adwaita t)
+(load-theme 'leuven-dark t)
+
 
 ;; пакетный менеджер
 (require 'package)
@@ -347,6 +350,9 @@
 ;; Горячие клавиши для просмотра символов
 (global-set-key (kbd "C-c l s") 'lsp-treemacs-symbols) ; Показать символы файла
 
+;; Отключение хлебных крошек в lsp-mode
+(setq lsp-headerline-breadcrumb-enable nil)
+
 ;; Установка nyan-mode и sublimity (если ещё не установлены)
 (unless (package-installed-p 'nyan-mode)
   (package-refresh-contents)
@@ -399,36 +405,36 @@
 
 
 
-;; Установка и настройка Centaur Tabs
-(unless (package-installed-p 'centaur-tabs)
-  (package-refresh-contents)
-  (package-install 'centaur-tabs))
+;; ;; Установка и настройка Centaur Tabs
+;; (unless (package-installed-p 'centaur-tabs)
+;;   (package-refresh-contents)
+;;   (package-install 'centaur-tabs))
 
-;; Активируем Centaur Tabs
-(require 'centaur-tabs)
-(centaur-tabs-mode t)
+;; ;; Активируем Centaur Tabs
+;; (require 'centaur-tabs)
+;; (centaur-tabs-mode t)
 
-;; Настройки внешнего вида
-(setq centaur-tabs-set-bar 'over)
-(setq centaur-tabs-set-icons t)
-(setq centaur-tabs-style "bar")
-(setq centaur-tabs-height 24)
-(setq centaur-tabs-set-modified-marker t)
+;; ;; Настройки внешнего вида
+;; (setq centaur-tabs-set-bar 'over)
+;; (setq centaur-tabs-set-icons t)
+;; (setq centaur-tabs-style "bar")
+;; (setq centaur-tabs-height 24)
+;; (setq centaur-tabs-set-modified-marker t)
 
-;; Горячие клавиши
-(global-set-key (kbd "C-c h") 'centaur-tabs-backward)
-(global-set-key (kbd "C-c l")  'centaur-tabs-forward)
-(global-set-key (kbd "C-c t n")   'centaur-tabs-create-new-tab)
-(global-set-key (kbd "C-c t k")   'centaur-tabs-kill-other-tabs)
+;; ;; Горячие клавиши
+;; (global-set-key (kbd "C-c h") 'centaur-tabs-backward)
+;; (global-set-key (kbd "C-c l")  'centaur-tabs-forward)
+;; (global-set-key (kbd "C-c t n")   'centaur-tabs-create-new-tab)
+;; (global-set-key (kbd "C-c t k")   'centaur-tabs-kill-other-tabs)
 
-;; Интеграция с projectile (опционально)
-(setq centaur-tabs-buffer-groups-function 'centaur-tabs-projectile-buffer-groups)
+;; ;; Интеграция с projectile (опционально)
+;; (setq centaur-tabs-buffer-groups-function 'centaur-tabs-projectile-buffer-groups)
 
 
-;; Темы (опционально)
-(setq centaur-tabs-set-theme "wave")
-(setq centaur-tabs-gray-out-icons 'buffer)
-(setq centaur-tabs-colorize-current-tab t)
+;; ;; Темы (опционально)
+;; (setq centaur-tabs-set-theme "wave")
+;; (setq centaur-tabs-gray-out-icons 'buffer)
+;; (setq centaur-tabs-colorize-current-tab t)
 
 
 ;; терминал
@@ -460,3 +466,23 @@
           (lambda ()
             (when (org-in-src-block-p 'sql)
               (lsp))))
+
+
+;; Установка Magit
+(unless (package-installed-p 'magit)
+  (package-refresh-contents)
+  (package-install 'magit))
+
+;; Настройка Magit
+(use-package magit
+  :ensure t
+  :bind ("C-x g" . magit-status) ; Открыть Magit по C-x g
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)) ; Открывать Magit в текущем окне
+
+
+;; плавный скролл
+(use-package good-scroll
+  :ensure t
+  :config
+  (good-scroll-mode 1))

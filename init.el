@@ -68,7 +68,7 @@
 ;; Установка шрифта Fira Code
 ;; (set-frame-font "Fira Code-11" nil t) ; 12 — размер шрифта, измените на нужный
 ;; Установка FiraCode Nerd Font
-(set-frame-font "FiraCode Nerd Font Mono-12" nil t)  ;; Размер шрифта 12
+(set-frame-font "FiraCode Nerd Font Mono-11" nil t)  ;; Размер шрифта 12
 
 ;; Установка ligature (если ещё не установлен)
 (unless (package-installed-p 'ligature)

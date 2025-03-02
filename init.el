@@ -295,6 +295,7 @@
 (global-set-key (kbd "C-c p r") 'projectile-remove-known-project) ; Удаление проекта
 
 (global-set-key (kbd "C-c p g") 'counsel-rg) ; Поиск по телу файлов в проекте
+(global-set-key (kbd "C-c p t") 'treemacs-projectile) ; Открыть treemacs для текущего проекта
 
 
 ;; Дополнительные настройки
@@ -305,7 +306,6 @@
 (with-eval-after-load 'treemacs
   (treemacs-project-follow-mode 1)) ; Включить интеграцию
 
-(global-set-key (kbd "C-c p t") 'treemacs-projectile) ; Открыть treemacs для текущего проекта
 
 (setq treemacs-display-current-project-exclusively t) ; Группировка вкладок по проектам
 (add-hook 'projectile-after-switch-project-hook 'treemacs-display-current-project-exclusively)
@@ -486,3 +486,4 @@
   :ensure t
   :config
   (good-scroll-mode 1))
+

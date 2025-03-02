@@ -441,3 +441,22 @@
 (add-hook 'vterm-mode-hook
           (lambda ()
             (display-line-numbers-mode -1)))
+
+
+;; Настройка org-babel для поддержки SQL
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((sql . t)))
+
+;; Включение lsp-mode
+(require 'lsp-mode)
+(add-hook 'sql-mode-hook #'lsp)
+
+(add-hook 'sql-mode-hook 'lsp)
+(setq lsp-sqls-workspace-config-path "root")
+
+;; Использование LSP в Org mode
+(add-hook 'org-mode-hook
+          (lambda ()
+            (when (org-in-src-block-p 'sql)
+              (lsp))))

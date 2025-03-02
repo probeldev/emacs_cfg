@@ -1,7 +1,8 @@
 ;; Установка темы
 ;; (load-theme 'deeper-blue t)
 ;; (load-theme 'adwaita t)
-(load-theme 'leuven-dark t)
+;; (load-theme 'leuven-dark t)
+(load-theme 'leuven t)
 
 
 ;; пакетный менеджер
@@ -40,7 +41,7 @@
 
 ;; Включение подсветки текущей строки
 (global-hl-line-mode 1)
-(set-face-background 'hl-line "#2e3440")  ;; Темно-синий фон
+(set-face-background 'hl-line "#eeeeee")  ;; Темно-синий фон
 
 ;; Установка размера Tab (в пробелах)
 (setq-default tab-width 4) ; Размер Tab для всех буферов

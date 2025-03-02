@@ -18,8 +18,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(google-translate minions treemacs-lsp neotree diff-hl centered-cursor-mode smooth-scrolling ligature projectile all-the-icons centaur-tabs fzf dap-mode go-mode company lsp-ui lsp-mode treemacs counsel ivy evil)))
+ '(package-selected-packages nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -38,6 +37,7 @@
 
 ;; Включение подсветки текущей строки
 (global-hl-line-mode 1)
+(set-face-background 'hl-line "#2e3440")  ;; Темно-синий фон
 
 ;; Установка размера Tab (в пробелах)
 (setq-default tab-width 4) ; Размер Tab для всех буферов
@@ -431,3 +431,13 @@
 (setq centaur-tabs-colorize-current-tab t)
 
 
+;; терминал
+(use-package vterm
+  :ensure t
+  :config
+  (setq vterm-max-scrollback 10000))  ;; Увеличить буфер прокрутки
+
+;; отключение номеров строк для vterm
+(add-hook 'vterm-mode-hook
+          (lambda ()
+            (display-line-numbers-mode -1)))

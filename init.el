@@ -1,3 +1,4 @@
+
 ;; Установка темы
 ;; (load-theme 'deeper-blue t)
 ;; (load-theme 'adwaita t)
@@ -169,8 +170,6 @@
 ;;(treemacs-mode 1)
 (treemacs-project-follow-mode 1)
 
-;; Горячая клавиша для открытия/закрытия treemacs
-(global-set-key (kbd "C-c tt") 'treemacs)
 
 
 ;; LSP для GO 
@@ -242,20 +241,7 @@
 (add-hook 'dap-mode-hook 'dap-ui-mode)
 
 
-;; Настройка сочетаний клавиш для LSP в evil-mode
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gd") 'lsp-find-definition) ; Перейти к определению (как `gd` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gr") 'lsp-find-references) ; Найти ссылки (как `gr` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "K") 'lsp-ui-doc-glance) ; Показать документацию (как `K` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gt") 'lsp-rename) ; Переименовать символ (как `<leader>r` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gi") 'imenu) ; показать символы из документа
 
-(global-set-key (kbd "C-c gr")   'lsp-find-references)
-(global-set-key (kbd "C-c rn")   'lsp-rename)
 
 ;; Отображение вкладок
 ;; Установка centaur-tabs (если ещё не установлен)
@@ -289,14 +275,6 @@
 ;; Включение fzf
 (require 'fzf)
 
-;; Горячие клавиши для поиска файлов в проекте
-(global-set-key (kbd "C-c p f") 'fzf-projectile) ; Поиск файлов в проекте
-(global-set-key (kbd "C-c p p") 'projectile-switch-project) ; Переключение проектов
-(global-set-key (kbd "C-c p a") 'projectile-add-known-project) ; Добавление проекта вручную
-(global-set-key (kbd "C-c p r") 'projectile-remove-known-project) ; Удаление проекта
-
-(global-set-key (kbd "C-c p g") 'counsel-rg) ; Поиск по телу файлов в проекте
-(global-set-key (kbd "C-c p t") 'treemacs-projectile) ; Открыть treemacs для текущего проекта
 
 
 ;; Дополнительные настройки
@@ -349,7 +327,6 @@
 (setq lsp-treemacs-info-face 'treemacs-info-face) ; Подсветка информаци
 
 ;; Горячие клавиши для просмотра символов
-(global-set-key (kbd "C-c l s") 'lsp-treemacs-symbols) ; Показать символы файла
 
 ;; Отключение хлебных крошек в lsp-mode
 (setq lsp-headerline-breadcrumb-enable nil)
@@ -402,7 +379,6 @@
   (setq google-translate-default-source-language "en"
         google-translate-default-target-language "ru"))
 
-(global-set-key (kbd "C-c g t") 'google-translate-at-point) ; Показать символы файла
 
 
 
@@ -483,8 +459,76 @@
 
 
 ;; плавный скролл
-(use-package good-scroll
-  :ensure t
-  :config
-  (good-scroll-mode 1))
+;; (use-package good-scroll
+;;   :ensure t
+;;   :config
+;;   (good-scroll-mode 1))
 
+;; Устанавливаем yaml-mode, если он не установлен
+(unless (package-installed-p 'yaml-mode)
+  (package-refresh-contents)
+  (package-install 'yaml-mode))
+
+;; Автоматически включаем yaml-mode для файлов .yml и .yaml
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-mode))
+
+;; Настройки для yaml-mode
+(add-hook 'yaml-mode-hook
+          (lambda ()
+            ;; Включаем автоматическое выравнивание отступов при новой строке
+            (define-key yaml-mode-map (kbd "RET") 'newline-and-indent)
+
+            ;; Включаем подсветку синтаксиса
+            (font-lock-mode t)
+
+            ;; Включаем flycheck для проверки синтаксиса YAML (если flycheck установлен)
+            (when (fboundp 'flycheck-mode)
+              (flycheck-mode t))
+
+            ;; Настраиваем отступы (2 пробела для YAML)
+            (setq yaml-indent-offset 2)))
+
+;; Дополнительные настройки для удобства
+(defun my-yaml-mode-setup ()
+  "Дополнительные настройки для yaml-mode."
+  ;; Включаем отображение парных скобок (если используется highlight-parentheses)
+  (when (fboundp 'highlight-parentheses-mode)
+    (highlight-parentheses-mode t))
+
+  ;; Включаем отображение пробелов и табуляции (опционально)
+  (setq show-trailing-whitespace t)
+  (setq whitespace-style '(face trailing tabs spaces))
+  (whitespace-mode t))
+
+;; Добавляем настройки в yaml-mode-hook
+(add-hook 'yaml-mode-hook 'my-yaml-mode-setup)
+
+;; Настройка flycheck для YAML (если flycheck установлен)
+(when (package-installed-p 'flycheck)
+  (add-hook 'yaml-mode-hook 'flycheck-mode))
+
+;; Поддержка ansible-doc (если вы работаете с Ansible)
+(when (package-installed-p 'ansible-doc)
+  (add-hook 'yaml-mode-hook 'ansible-doc-mode))
+
+;; Поддержка yaml-path (если нужно работать с путями в YAML)
+(when (package-installed-p 'yaml-path)
+  (add-hook 'yaml-mode-hook 'yaml-path-mode))
+
+;; Поддержка yafolding (сворачивание блоков в YAML)
+(when (package-installed-p 'yafolding)
+  (add-hook 'yaml-mode-hook 'yafolding-mode))
+
+;; Поддержка lsp-mode для YAML (если используется Language Server Protocol)
+(when (package-installed-p 'lsp-mode)
+  (add-hook 'yaml-mode-hook #'lsp-deferred))
+
+;; Поддержка tree-sitter (если используется tree-sitter для улучшенного парсинга)
+(when (package-installed-p 'tree-sitter)
+  (add-hook 'yaml-mode-hook 'tree-sitter-mode))
+
+
+
+;; Подключение дополнительный файлов
+(load "~/.emacs.d/hotkey.el")

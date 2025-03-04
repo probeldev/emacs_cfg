@@ -1,6 +1,7 @@
 
 ;; LSP
 (global-set-key (kbd "C-c l s") 'lsp-treemacs-symbols) ; Показать символы файла
+(global-set-key (kbd "C-c l e")   'lsp-treemacs-errors-list) ; Показать ошибки из проекта
 (global-set-key (kbd "C-c gr")   'lsp-find-references)
 (global-set-key (kbd "C-c rn")   'lsp-rename)
 

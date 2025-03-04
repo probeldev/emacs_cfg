@@ -26,11 +26,18 @@
 (global-set-key (kbd "C-c p t") 'treemacs-projectile) ; Открыть treemacs для текущего проекта
 
 
-;; Горячая клавиша для открытия/закрытия treemacs
-(global-set-key (kbd "C-c tt") 'treemacs)
 
 (global-set-key (kbd "C-c g t") 'google-translate-at-point) ; Перевести выделенный текст
 
 (global-set-key (kbd "C-c s s") 'bs-show) ; показать список буферов
-(global-set-key (kbd "C-c v v") 'vterm) ; показать список буферов
+(global-set-key (kbd "C-c vv") 'vterm) ; показать список буферов
+
+
+;; TREEMACS
+(global-set-key (kbd "C-c tt") 'treemacs) ; Открытие/закрытие
+(global-set-key (kbd "C-c ta") 'treemacs-create-file) ; Создание файла
+(global-set-key (kbd "C-c tf") 'treemacs-create-dir) ; Создание директории 
+(global-set-key (kbd "C-c tm") 'treemacs-move-file) ; Перемещение файла
+(global-set-key (kbd "C-c td") 'treemacs-delete-file) ; Удаление файла
+
 

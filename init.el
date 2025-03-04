@@ -495,11 +495,7 @@
   ;; Включаем отображение парных скобок (если используется highlight-parentheses)
   (when (fboundp 'highlight-parentheses-mode)
     (highlight-parentheses-mode t))
-
-  ;; Включаем отображение пробелов и табуляции (опционально)
-  (setq show-trailing-whitespace t)
-  (setq whitespace-style '(face trailing tabs spaces))
-  (whitespace-mode t))
+)
 
 ;; Добавляем настройки в yaml-mode-hook
 (add-hook 'yaml-mode-hook 'my-yaml-mode-setup)

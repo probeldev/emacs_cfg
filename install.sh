@@ -4,3 +4,4 @@ rm -rf ~/.emacs.d
 mkdir ~/.emacs.d
 cp init.el ~/.emacs.d/init.el
 cp hotkey.el ~/.emacs.d/hotkey.el
+cp font.el ~/.emacs.d/font.el

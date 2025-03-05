@@ -457,6 +457,7 @@
 (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/vterm.el")
 (load "~/.emacs.d/font.el")
+(load "~/.emacs.d/flycheck.el")
 (load "~/.emacs.d/hotkey.el")
 
 

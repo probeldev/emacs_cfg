@@ -1,7 +1,7 @@
 
 ;; LSP
 (global-set-key (kbd "C-c l s") 'imenu) ; Показать символы файла
-(global-set-key (kbd "C-c l e")   'lsp-treemacs-errors-list) ; Показать ошибки из проекта
+(global-set-key (kbd "C-c l e")   'lsp-ui-flycheck-list) ; Показать ошибки из проекта
 (global-set-key (kbd "C-c l r")   'lsp-treemacs-references)
 (global-set-key (kbd "C-c l n")   'lsp-rename)
 (global-set-key (kbd "C-c l d")   'lsp-find-definition)
@@ -42,5 +42,6 @@
 (global-set-key (kbd "C-c tf") 'treemacs-create-dir) ; Создание директории 
 (global-set-key (kbd "C-c tm") 'treemacs-move-file) ; Перемещение файла
 (global-set-key (kbd "C-c td") 'treemacs-delete-file) ; Удаление файла
+
 
 

@@ -12,25 +12,6 @@
 (package-initialize)
 
 
-;; vim mode
-(unless (package-installed-p 'evil)
-  (package-install 'evil))
-
-(require 'evil)
-(evil-mode 1)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 
 ;; скрытие toolbar, menu, statusline
 (tool-bar-mode -1)
@@ -46,6 +27,8 @@
 
 ;; отключение мигание курсора
 (blink-cursor-mode -1)
+
+(setq inhibit-startup-message t) ;; Отключить стартовое сообщение
 
 ;; Установка размера Tab (в пробелах)
 (setq-default tab-width 4) ; Размер Tab для всех буферов
@@ -116,6 +99,12 @@
 (require 'treemacs)
 ;;(treemacs-mode 1)
 (treemacs-project-follow-mode 1)
+
+;; открытие файла всегда в текущем окне, а не создание нового 
+(with-eval-after-load 'treemacs
+  (setq treemacs-pre-file-insert-predicates '(treemacs-is-file-git-ignored?))
+  (setq treemacs-no-delete-other-windows t)
+  (setq treemacs-reuse-window 'treemacs-select-window))
 
 
 
@@ -361,16 +350,6 @@
 ;; (setq centaur-tabs-colorize-current-tab t)
 
 
-;; терминал
-(use-package vterm
-  :ensure t
-  :config
-  (setq vterm-max-scrollback 10000))  ;; Увеличить буфер прокрутки
-
-;; отключение номеров строк для vterm
-(add-hook 'vterm-mode-hook
-          (lambda ()
-            (display-line-numbers-mode -1)))
 
 
 ;; Настройка org-babel для поддержки SQL
@@ -474,5 +453,10 @@
 
 
 ;; Подключение дополнительный файлов
+
+(load "~/.emacs.d/evil.el")
+(load "~/.emacs.d/vterm.el")
 (load "~/.emacs.d/font.el")
 (load "~/.emacs.d/hotkey.el")
+
+

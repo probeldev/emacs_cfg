@@ -1,21 +1,23 @@
 
 ;; LSP
-(global-set-key (kbd "C-c l s") 'lsp-treemacs-symbols) ; Показать символы файла
+(global-set-key (kbd "C-c l s") 'imenu) ; Показать символы файла
 (global-set-key (kbd "C-c l e")   'lsp-treemacs-errors-list) ; Показать ошибки из проекта
-(global-set-key (kbd "C-c gr")   'lsp-find-references)
-(global-set-key (kbd "C-c rn")   'lsp-rename)
+(global-set-key (kbd "C-c l r")   'lsp-treemacs-references)
+(global-set-key (kbd "C-c l n")   'lsp-rename)
+(global-set-key (kbd "C-c l d")   'lsp-find-definition)
+(global-set-key (kbd "C-c l k")   'lsp-ui-doc-glance)
 
 ;; Настройка сочетаний клавиш для LSP в evil-mode
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gd") 'lsp-find-definition) ; Перейти к определению (как `gd` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gr") 'lsp-find-references) ; Найти ссылки (как `gr` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "K") 'lsp-ui-doc-glance) ; Показать документацию (как `K` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gt") 'lsp-rename) ; Переименовать символ (как `<leader>r` в Vim)
-(evil-define-key 'normal lsp-mode-map
-  (kbd "gi") 'imenu) ; показать символы из документа
+;; (evil-define-key 'normal lsp-mode-map
+;;   (kbd "gd") 'lsp-find-definition) ; Перейти к определению (как `gd` в Vim)
+;; (evil-define-key 'normal lsp-mode-map
+;;   (kbd "gr") 'lsp-find-references) ; Найти ссылки (как `gr` в Vim)
+;; (evil-define-key 'normal lsp-mode-map
+;;   (kbd "K") 'lsp-ui-doc-glance) ; Показать документацию (как `K` в Vim)
+;; (evil-define-key 'normal lsp-mode-map
+;;   (kbd "gt") 'lsp-rename) ; Переименовать символ (как `<leader>r` в Vim)
+;; (evil-define-key 'normal lsp-mode-map
+;;   (kbd "gi") 'imenu) ; показать символы из документа
 
 
 ;; Проекты

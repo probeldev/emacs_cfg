@@ -21,8 +21,8 @@
 
 
 ;; Проекты
-(global-set-key (kbd "C-c p f") 'fzf-projectile) ; Поиск файлов в проекте
-(global-set-key (kbd "C-c p p") 'projectile-switch-project) ; Переключение проектов
+(global-set-key (kbd "C-c p p") 'projectile-find-file) ; Поиск файлов в проекте
+(global-set-key (kbd "C-c p c") 'projectile-switch-project) ; Переключение проектов
 (global-set-key (kbd "C-c p a") 'projectile-add-known-project) ; Добавление проекта вручную
 (global-set-key (kbd "C-c p r") 'projectile-remove-known-project) ; Удаление проекта
 (global-set-key (kbd "C-c p g") 'counsel-rg) ; Поиск по телу файлов в проекте

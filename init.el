@@ -49,8 +49,12 @@
 (set-face-attribute 'default nil :height 100) ; Размер шрифта (в процентах)
 
 ;; отключеие временных файлов
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+;;; backup/autosave
+(defvar backup-dir (expand-file-name "~/.emacs.d/backup/"))
+(defvar autosave-dir (expand-file-name "~/.emacs.d/autosave/"))
+(setq backup-directory-alist (list (cons ".*" backup-dir)))
+(setq auto-save-list-file-prefix autosave-dir)
+(setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
 
 ;; Включение отображения номеров строк
@@ -68,14 +72,14 @@
   :ensure t
   :if (display-graphic-p))
 
-;; Установка minions
-(use-package minions
-  :ensure t
-  :config
-  (minions-mode 1)
-  :custom
-  (minions-mode-line-lighter "⚙")
-  (minions-direct '(flycheck-mode)))
+;; ;; Установка minions
+;; (use-package minions
+;;   :ensure t
+;;   :config
+;;   (minions-mode 1)
+;;   :custom
+;;   (minions-mode-line-lighter "⚙")
+;;   (minions-direct '(flycheck-mode)))
 
 ;; Проверка и установка ivy и counsel
 (unless (package-installed-p 'ivy)
@@ -463,4 +467,5 @@
 (load "~/.emacs.d/flycheck.el")
 (load "~/.emacs.d/hotkey.el")
 
-
+(setq-default mode-line-buffer-identification
+              (list '(:eval (abbreviate-file-name default-directory))))

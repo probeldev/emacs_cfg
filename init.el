@@ -60,6 +60,9 @@
 (add-hook 'dired-mode-hook (lambda () (display-line-numbers-mode -1)))
 (add-hook 'term-mode-hook (lambda () (display-line-numbers-mode -1)))
 
+;; Short messages
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; Установка all-the-icons
 (use-package all-the-icons
   :ensure t

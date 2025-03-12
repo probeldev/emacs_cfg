@@ -6,6 +6,7 @@
 (global-set-key (kbd "C-c l n")   'lsp-rename)
 (global-set-key (kbd "C-c l d")   'lsp-find-definition)
 (global-set-key (kbd "C-c l k")   'lsp-ui-doc-glance)
+(global-set-key (kbd "C-c l i")   'lsp-treemacs-implementations)
 
 ;; Настройка сочетаний клавиш для LSP в evil-mode
 ;; (evil-define-key 'normal lsp-mode-map

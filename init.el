@@ -469,3 +469,8 @@
 
 (setq-default mode-line-buffer-identification
               (list '(:eval (abbreviate-file-name default-directory))))
+
+
+;; отображение буферов с * внизу экрана всегда
+(add-to-list 'display-buffer-alist
+             '("^\\*.*\\*$" . (display-buffer-below-selected)))

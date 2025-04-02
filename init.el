@@ -67,10 +67,6 @@
 ;; Short messages
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-;; Установка all-the-icons
-(use-package all-the-icons
-  :ensure t
-  :if (display-graphic-p))
 
 ;; ;; Установка minions
 ;; (use-package minions
@@ -81,21 +77,21 @@
 ;;   (minions-mode-line-lighter "⚙")
 ;;   (minions-direct '(flycheck-mode)))
 
-;; Проверка и установка ivy и counsel
-(unless (package-installed-p 'ivy)
-  (package-refresh-contents)
-  (package-install 'ivy))
+;; ;; Проверка и установка ivy и counsel
+;; (unless (package-installed-p 'ivy)
+;;   (package-refresh-contents)
+;;   (package-install 'ivy))
 
-(unless (package-installed-p 'counsel)
-  (package-refresh-contents)
-  (package-install 'counsel))
-;; Включение ivy-mode
-(ivy-mode 1)
+;; (unless (package-installed-p 'counsel)
+;;   (package-refresh-contents)
+;;   (package-install 'counsel))
+;; ;; Включение ivy-mode
+;; (ivy-mode 1)
 
-;; Настройка ivy
-(setq ivy-use-virtual-buffers t) ; Показывать недавние файлы в списке буферов
-(setq enable-recursive-minibuffers t) ; Разрешить рекурсивные мини-буферы
-(setq ivy-count-format "(%d/%d) ") ; Формат отображения количества результатов
+;; ;; Настройка ivy
+;; (setq ivy-use-virtual-buffers t) ; Показывать недавние файлы в списке буферов
+;; (setq enable-recursive-minibuffers t) ; Разрешить рекурсивные мини-буферы
+;; (setq ivy-count-format "(%d/%d) ") ; Формат отображения количества результатов
 
 ;; Установка treemacs (если ещё не установлен)
 (unless (package-installed-p 'treemacs)
@@ -191,6 +187,11 @@
 (unless (package-installed-p 'centaur-tabs)
   (package-refresh-contents)
   (package-install 'centaur-tabs))
+
+; Установка all-the-icons
+(use-package all-the-icons
+   :ensure t
+   :if (display-graphic-p))
 
 ;; Установка all-the-icons (если ещё не установлен)
 (unless (package-installed-p 'all-the-icons)
@@ -461,6 +462,7 @@
 
 ;; Подключение дополнительный файлов
 
+(load "~/.emacs.d/helm.el")
 (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/vterm.el")
 (load "~/.emacs.d/font.el")

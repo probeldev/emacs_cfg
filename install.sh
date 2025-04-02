@@ -9,3 +9,4 @@ cp evil.el ~/.emacs.d/evil.el
 cp vterm.el ~/.emacs.d/vterm.el
 cp flycheck.el ~/.emacs.d/flycheck.el
 cp helm.el ~/.emacs.d/helm.el
+cp ui.el ~/.emacs.d/ui.el

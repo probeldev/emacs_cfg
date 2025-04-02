@@ -13,22 +13,7 @@
 
 
 
-;; скрытие toolbar, menu, statusline
-(tool-bar-mode -1)
-(setq mode-line-format nil)
-(menu-bar-mode -1)
 
-;; Отключение скроллбара
-(scroll-bar-mode -1)
-
-;; Включение подсветки текущей строки
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#eeeeee")  ;; Темно-синий фон
-
-;; отключение мигание курсора
-(blink-cursor-mode -1)
-
-(setq inhibit-startup-message t) ;; Отключить стартовое сообщение
 
 ;; Установка размера Tab (в пробелах)
 (setq-default tab-width 4) ; Размер Tab для всех буферов
@@ -57,12 +42,6 @@
 (setq auto-save-file-name-transforms `((".*" ,autosave-dir t)))
 
 
-;; Включение отображения номеров строк
-(global-display-line-numbers-mode 1)
-
-;; Отключение номеров строк в определённых режимах
-(add-hook 'dired-mode-hook (lambda () (display-line-numbers-mode -1)))
-(add-hook 'term-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 ;; Short messages
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -462,6 +441,7 @@
 
 ;; Подключение дополнительный файлов
 
+(load "~/.emacs.d/ui.el")
 (load "~/.emacs.d/helm.el")
 (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/vterm.el")
@@ -476,3 +456,15 @@
 ;; отображение буферов с * внизу экрана всегда
 (add-to-list 'display-buffer-alist
              '("^\\*.*\\*$" . (display-buffer-below-selected)))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

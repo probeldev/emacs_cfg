@@ -4,18 +4,18 @@
 (use-package helm
   :ensure t
   :demand t  ; Загружать сразу при старте
-  :bind (
-    ("M-x"     . helm-M-x)            ; Улучшенный M-x
-    ("C-x C-f" . helm-find-files)     ; Поиск файлов
-    ("C-x b"   . helm-buffers-list)   ; Список буферов
-    ("C-x r b" . helm-bookmarks)      ; Закладки
-    ("C-c h o" . helm-occur)          ; Поиск в буфере
-    ("C-c h l" . helm-locate)         ; Поиск в системе (locate)
-    :map helm-map
-    ("TAB"     . helm-execute-persistent-action) ; TAB для действий
-    ("C-i"     . helm-execute-persistent-action) ; Альтернатива TAB
-    ("C-z"     . helm-select-action)  ; Выбор действия
-  )
+  ;; :bind (
+  ;;   ("M-x"     . helm-M-x)            ; Улучшенный M-x
+  ;;   ("C-x C-f" . helm-find-files)     ; Поиск файлов
+  ;;   ("C-x b"   . helm-buffers-list)   ; Список буферов
+  ;;   ("C-x r b" . helm-bookmarks)      ; Закладки
+  ;;   ("C-c h o" . helm-occur)          ; Поиск в буфере
+  ;;   ("C-c h l" . helm-locate)         ; Поиск в системе (locate)
+  ;;   :map helm-map
+  ;;   ("TAB"     . helm-execute-persistent-action) ; TAB для действий
+  ;;   ("C-i"     . helm-execute-persistent-action) ; Альтернатива TAB
+  ;;   ("C-z"     . helm-select-action)  ; Выбор действия
+  ;; )
   :custom
   (helm-ff-auto-update-initial-value t) ; Автообновление при поиске файлов
   (helm-split-window-inside-p t)       ; Превью в текущем окне
@@ -39,7 +39,7 @@
 (use-package helm-projectile
   :ensure t
   :after (helm projectile)
-  :bind ("C-c p" . helm-projectile)
+  ;; :bind ("C-c p" . helm-projectile)
   :config
   (helm-projectile-on)
   (setq projectile-completion-system 'helm)
@@ -72,16 +72,16 @@
 ;              t))
 ;
 ;; Интеграция с Magit (если используется)
-(use-package helm-magit
-  :ensure t
-  :after (helm magit)
-)
+;; (use-package helm-magit
+;;   :ensure t
+;;   :after (helm magit)
+;; )
 
 
 ;; Улучшенный grep через Helm
 (use-package helm-grep
   :after helm
-  :bind ("C-c h g" . helm-grep-do-git-grep)
+  ;; :bind ("C-c h g" . helm-grep-do-git-grep)
 )
 
 ;; Отключить ненужные источники (опционально)

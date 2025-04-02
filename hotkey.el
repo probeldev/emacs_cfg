@@ -45,4 +45,6 @@
 (global-set-key (kbd "C-c td") 'treemacs-delete-file) ; Удаление файла
 
 
-
+;; HELM
+(global-set-key (kbd "C-x C-f") 'helm-find-files)     ; Поиск файлов
+(global-set-key (kbd "M-x") 'helm-M-x)     ; Поиск файлов

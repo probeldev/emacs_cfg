@@ -8,8 +8,8 @@
 (scroll-bar-mode -1)
 
 ;; Включение подсветки текущей строки
-(global-hl-line-mode 1)
-(set-face-background 'hl-line "#eeeeee")  ;; Темно-синий фон
+;; (global-hl-line-mode 1)
+;; (set-face-background 'hl-line "#eeeeee")  ;; Темно-синий фон
 
 ;; отключение мигание курсора
 (blink-cursor-mode -1)
